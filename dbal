@@ -1,0 +1,26 @@
+<?php
+$name=$_GET['pname'];
+$fdate=$_GET['fdate'];
+$tdate=$_GET['tdate'];
+$con=mysqli_connect("localhost","root","","nila");
+$sql="select * from main where name='$name'";
+$ch=mysqli_query($con,$sql);
+if(mysqli_num_rows($ch)<=0)
+{
+	echo"<script> alert('NO ACCOUNT'); location='party.php';</script>";
+}
+else
+{
+	$row=mysqli_fetch_array($ch);
+	$tid=$row["id"];
+	$sq="select * from purchases where pur_date>='$fdate' and pur_date<'$tdate'";
+	$c=mysqli_query($con,$sql);
+	
+	while($ro=mysqli_fetch_array($c));
+	{
+		echo $ro["pur_amo"];
+		echo"<br>";
+	}
+	
+}
+?>
